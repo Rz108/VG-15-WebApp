@@ -1,4 +1,4 @@
-# CA1-DAAA2B05-2222329-GohRuiZhuo_ImageApp
+# CA2 Image App
 
 
 
