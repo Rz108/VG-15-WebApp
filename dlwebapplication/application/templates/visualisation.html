@@ -1,0 +1,228 @@
+{% extends "layout.html" %}
+{% set footer = false %}
+
+{% block content %}
+<style>
+    .forms {
+        background-color: #a3bbd6 !important;
+    }
+
+    .dropdown-container {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .dropdown-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    select {
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 5px;
+        width: 100%;
+    }
+</style>
+<div class="container-fluid p-4 forms">
+    <h1 class="text-center mb-4" style="font-size: 28px; font-weight: bold; color: #333; margin-bottom: 20px;">Visualisation of Results</h1>
+    <div class="dropdown-container">
+        <h2 class="dropdown-title" style="font-size: 20px; font-weight: bold; margin-bottom: 10px; color: #333;">Select Model:</h2>
+        <form action="{{ url_for('visualisation') }}" method="get">
+            <select name="model_filter" onchange="this.form.submit()" style="padding: 10px; font-size: 18px; border-radius: 5px; width: 100%;">
+                <option value="all" {{ 'selected' if model_filter == 'all' else '' }}>All Models</option>
+                <option value="128x128 Model" {{ 'selected' if model_filter == '128x128 Model' else '' }}>128x128 Model</option>
+                <option value="31x31 Model" {{ 'selected' if model_filter == '31x31 Model' else '' }}>31x31 Model</option>
+            </select>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-lg-6" >
+            <div class="card shadow mb-4" style="background-color: #F0FFF0">
+                <div class="card-header py-3 text-center">
+                    <h6 class="m-0 font-weight-bold text-primary">Class Distribution</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="classDistributionChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card shadow mb-4"style="background-color: #F0FFF0">
+                <div class="card-header py-3 text-center">
+                    <h6 class="m-0 font-weight-bold text-primary">Predictions Over Time</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="predictionsOverTimeChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card shadow mb-4" style="background-color: #F0FFF0">
+                <div class="card-header py-3 text-center">
+                    <h6 class="m-0 font-weight-bold text-primary">Confidence Distribution</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="confidenceDistributionChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Assuming 'class_distribution_labels' and 'class_distribution_values' are provided in sorted order
+        const classDistributionCtx = document.getElementById('classDistributionChart').getContext('2d');
+        const classDistributionChart = new Chart(classDistributionCtx, {
+            type: 'pie',
+            data: {
+                labels: {{ class_distribution_labels | tojson }},
+                datasets: [{
+                    data: {{ class_distribution_values | tojson }},
+                    backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', /* add more colors if needed */],
+                    hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', /* add more hover colors if needed */],
+                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return `${tooltipItem.label}: ${tooltipItem.formattedValue}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Predictions Over Time Chart Initialization
+        const predictionsOverTimeCtx = document.getElementById('predictionsOverTimeChart').getContext('2d');
+        const predictionsOverTimeChart = new Chart(predictionsOverTimeCtx, {
+            type: 'line',
+            data: {
+                labels: {{ predictions_over_time_labels | tojson }},
+                datasets: [{
+                    label: 'Predictions',
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(78, 115, 223, 0.05)",
+                    borderColor: "rgba(78, 115, 223, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                    pointBorderColor: "rgba(78, 115, 223, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                    pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: {{ predictions_over_time_values | tojson }},
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                            tooltipFormat: 'yyyy-MM-dd'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        },
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 7
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Count'
+                        },
+                        ticks: {
+                            maxTicksLimit: 5,
+                            padding: 10,
+                        },
+                        grid: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return `${tooltipItem.dataset.label}: ${tooltipItem.formattedValue}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+
+    const confidenceDistributionCtx = document.getElementById('confidenceDistributionChart').getContext('2d');
+    const confidenceDistributionChart = new Chart(confidenceDistributionCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ confidence_distribution_data.labels | tojson }},
+            datasets: [{
+                label: 'Confidence Distribution',
+                data: {{ confidence_distribution_data.data | tojson }},
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Frequency'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Confidence Score'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

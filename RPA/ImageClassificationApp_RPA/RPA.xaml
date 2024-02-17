@@ -1,0 +1,436 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Flowchart_ImageClassification_App" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="624,702" sap2010:WorkflowViewState.IdRef="Flowchart_ImageClassification_App_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Triggers</x:String>
+      <x:String>UiPath.Platform.Triggers</x:String>
+      <x:String>UiPath.Platform.Triggers.Scope</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Triggers</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.Semantic.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Flowchart DisplayName="Flowchart_ImageClassification_App" sap:VirtualizedContainerService.HintSize="634,637.3333333333334" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,74.66666666666667</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.16666666666667 300,127.16666666666667</av:PointCollection>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID0</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID0">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">200,127.16666666666667</av:Point>
+          <av:Size x:Key="ShapeSize">200,25.333333333333332</av:Size>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence sap:VirtualizedContainerService.HintSize="692.6666666666666,7550.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application: image-classification-app-ww2z.onrender.com - Google Chrome" sap:VirtualizedContainerService.HintSize="630.6666666666666,7440" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" ScopeGuid="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V2">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="596.6666666666666,7142.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'chrome.exe image-classi…'" sap:VirtualizedContainerService.HintSize="534.6666666666666,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable CvElementArea="823, 106, 36, 31" CvType="Icon" DesignTimeRectangle="821, 104, 40, 35" DesignTimeScaleFactor="1" ElementType="Icon" Guid="e40632fb-5185-4b75-b04c-0a1e1a28ba96" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAjCAYAAADmOUiuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAABvSURBVFhH7dQxCoAwEAVRD2VlldOJKOIhBMFTRtJtsZBiEC2meG3+FEuGcSr1zwykDKQMpAykuoHLdtTzul/R3s42o08D53VPNyNvkDKQMpDqBvoPJpuRN0gZSBlIdQP9B5PNyBukDKQMpAxkSn0A0krdEd3KaVoAAAAASUVORK5CYII=" InformativeScreenshot="5d068584e3c23a11a84e27c1d7007fa2.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='image-classification-app-ww2z.onrender.com - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive" />
+                  </uix:NClick.Target>
+                </uix:NClick>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Log In'" sap:VirtualizedContainerService.HintSize="534.6666666666666,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable CvElementArea="22, 198, 82, 45" CvTextArea="40, 212, 46, 18" CvTextArgument="Log In" CvType="Button" DesignTimeRectangle="22, 198, 82, 45" DesignTimeScaleFactor="1" ElementType="Button" Guid="d70a397b-fe36-40d7-9cec-0d9524bddaa2" InformativeScreenshot="786ca02531c9efe3b6059dc115c04df7.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='image-classification-app-ww2z.onrender.com - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive" />
+                  </uix:NClick.Target>
+                </uix:NClick>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'email'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="534.6666666666666,222.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="HardwareEvents" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Text="james2028@gmail.com" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable CvElementArea="253, 487, 388, 41" CvType="InputBox" DesignTimeRectangle="253, 487, 388, 41" DesignTimeScaleFactor="1" ElementType="InputBox" Guid="9ca19a54-69d7-44a9-8d94-d65c5f06c736" InformativeScreenshot="49f806a24b107541136418d6457dfc5b.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Sign Up - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CvTextArea="265, 498, 132, 19" CvTextArgument="name@gmail.com" CvType="Text" DesignTimeRectangle="265, 498, 132, 19" ElementType="Text" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="534.6666666666666,222.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="HardwareEvents" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Text="123" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable CvElementArea="252, 578, 388, 41" CvType="InputBox" DesignTimeRectangle="252, 578, 388, 41" DesignTimeScaleFactor="1" ElementType="InputBox" Guid="74c9baf1-c2e9-4f27-abfd-bc37af4bfac2" InformativeScreenshot="2b873edfe052d4ae09a7ce392ef9cdbe.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Sign Up - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CvTextArea="266, 591, 71, 15" CvTextArgument="Password" CvType="Text" DesignTimeRectangle="266, 591, 71, 15" ElementType="Text" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="534.6666666666666,6102.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                  <TryCatch.Try>
+                    <Sequence sap:VirtualizedContainerService.HintSize="496,5759.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:String" Name="outputFromGetText" />
+                        <Variable x:TypeArguments="x:String" Name="loginStatusMessage" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Login'" sap:VirtualizedContainerService.HintSize="434,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable CvElementArea="571, 678, 70, 42" CvTextArea="586, 691, 41, 18" CvTextArgument="Login" CvType="Button" DesignTimeRectangle="571, 678, 70, 42" DesignTimeScaleFactor="1" ElementType="Button" Guid="c625230a-8c66-4741-929c-9f726592ddf0" InformativeScreenshot="c33762f96101054cae329f3125b9c6d5.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Sign Up - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive" />
+                        </uix:NClick.Target>
+                      </uix:NClick>
+                      <uix:NGetText DisplayName="Get Text 'User does not exist'" sap:VirtualizedContainerService.HintSize="434,159.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" TextString="[outputFromGetText]" Version="V3">
+                        <uix:NGetText.Target>
+                          <uix:TargetAnchorable CvElementArea="253, 447, 389, 68" CvType="InputBox" DesignTimeRectangle="253, 447, 389, 68" DesignTimeScaleFactor="1" ElementType="InputBox" Guid="3f0acfd6-0898-4fd3-b949-5539e80b610a" InformativeScreenshot="824ff9ead33a2c568428e68a0b3955a5.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Sign Up - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target CvTextArea="270, 471, 174, 18" CvTextArgument="User does not exist" CvType="Text" DesignTimeRectangle="270, 471, 174, 18" ElementType="Text" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NGetText.Target>
+                      </uix:NGetText>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[loginStatusMessage]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[outputFromGetText]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <If Condition="[loginStatusMessage.Length &gt; 0]" sap:VirtualizedContainerService.HintSize="434,5119.333333333333" sap2010:WorkflowViewState.IdRef="If_2">
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="376,4854" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Need an account?'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CvTextArea="324, 797, 164, 18" CvTextArgument="Need an account?" CvType="Text" DesignTimeRectangle="324, 797, 164, 18" DesignTimeScaleFactor="1" ElementType="Text" Guid="fdde3cc6-a5b9-4ef9-855c-5eb054a18345" InformativeScreenshot="3b634a187ec8ad8139aaba27a7497367.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Sign Up - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive" />
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Username'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,222.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_4" InteractionMode="HardwareEvents" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Text="james18" Version="V3">
+                              <uix:NTypeInto.Target>
+                                <uix:TargetAnchorable CvElementArea="117, 452, 659, 43" CvType="InputBox" DesignTimeRectangle="117, 452, 659, 43" DesignTimeScaleFactor="1" ElementType="InputBox" Guid="2fc395a2-0133-4f46-9f40-313b79120187" InformativeScreenshot="922aa7c45d27c3e5a2dee50442e1cd73.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='image-classification-app-ww2z.onrender.com/register - Google Chr*' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target CvTextArea="130, 465, 75, 15" CvTextArgument="Username" CvType="Text" DesignTimeRectangle="130, 465, 75, 15" ElementType="Text" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NTypeInto.Target>
+                            </uix:NTypeInto>
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'email'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,222.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InteractionMode="HardwareEvents" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Text="james2028@gmail.com" Version="V3">
+                              <uix:NTypeInto.Target>
+                                <uix:TargetAnchorable CvElementArea="119, 545, 658, 40" CvType="InputBox" DesignTimeRectangle="119, 545, 658, 40" DesignTimeScaleFactor="1" ElementType="InputBox" Guid="702b0d80-cea5-4f7d-9cba-f16905397cc6" InformativeScreenshot="ff2ba6b64de1c6f5fc2e4db991fea6f8.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='image-classification-app-ww2z.onrender.com/register - Google Chr*' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target CvTextArea="130, 556, 153, 19" CvTextArgument="name@example.com" CvType="Text" DesignTimeRectangle="130, 556, 153, 19" ElementType="Text" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NTypeInto.Target>
+                            </uix:NTypeInto>
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,222.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_6" InteractionMode="HardwareEvents" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Text="123" Version="V3">
+                              <uix:NTypeInto.Target>
+                                <uix:TargetAnchorable CvElementArea="118, 637, 660, 41" CvType="InputBox" DesignTimeRectangle="118, 637, 660, 41" DesignTimeScaleFactor="1" ElementType="InputBox" Guid="1cb47a56-4bab-474c-9531-d48675690c32" InformativeScreenshot="78564c43fed45fd73f915dda07ff7bad.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='image-classification-app-ww2z.onrender.com/register - Google Chr*' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                                      <uix:Target CvTextArea="131, 649, 71, 15" CvTextArgument="Password" CvType="Text" DesignTimeRectangle="131, 649, 71, 15" ElementType="Text" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                      <uix:Target CvElementArea="118, 729, 659, 40" CvType="InputBox" DesignTimeRectangle="118, 729, 659, 40" ElementType="InputBox" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NTypeInto.Target>
+                            </uix:NTypeInto>
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,222.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_7" InteractionMode="HardwareEvents" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Text="123" Version="V3">
+                              <uix:NTypeInto.Target>
+                                <uix:TargetAnchorable CvElementArea="118, 729, 659, 40" CvType="InputBox" DesignTimeRectangle="118, 729, 659, 40" DesignTimeScaleFactor="1" ElementType="InputBox" Guid="c9171dc9-a644-4f8a-a41f-d3b5649ccb7b" InformativeScreenshot="0dc878cc7bf5d109f66f3bffbdc49cf3.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='image-classification-app-ww2z.onrender.com/register - Google Chr*' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target CvTextArea="117, 682, 90, 18" CvTextArgument="Password" CvType="Text" DesignTimeRectangle="117, 682, 90, 18" ElementType="Text" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NTypeInto.Target>
+                            </uix:NTypeInto>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Register'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_7" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CvElementArea="117, 804, 88, 41" CvTextArea="130, 815, 63, 18" CvTextArgument="Register" CvType="Button" DesignTimeRectangle="117, 804, 88, 41" DesignTimeScaleFactor="1" ElementType="Button" Guid="e53759ce-a1e4-4fb6-a00f-46f874d45dac" InformativeScreenshot="8d7cbf06bb129bdf554c0bb19515f680.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='image-classification-app-ww2z.onrender.com/register - Google Chr*' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive" />
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'email'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,222.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_8" InteractionMode="HardwareEvents" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Text="james2028@gmail.com" Version="V3">
+                              <uix:NTypeInto.Target>
+                                <uix:TargetAnchorable CvElementArea="253, 487, 388, 41" CvType="InputBox" DesignTimeRectangle="253, 487, 388, 41" DesignTimeScaleFactor="1" ElementType="InputBox" Guid="9ca19a54-69d7-44a9-8d94-d65c5f06c736" InformativeScreenshot="49f806a24b107541136418d6457dfc5b.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Sign Up - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target CvTextArea="265, 498, 132, 19" CvTextArgument="name@gmail.com" CvType="Text" DesignTimeRectangle="265, 498, 132, 19" ElementType="Text" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NTypeInto.Target>
+                            </uix:NTypeInto>
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,222.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_9" InteractionMode="HardwareEvents" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Text="123" Version="V3">
+                              <uix:NTypeInto.Target>
+                                <uix:TargetAnchorable CvElementArea="252, 578, 388, 41" CvType="InputBox" DesignTimeRectangle="252, 578, 388, 41" DesignTimeScaleFactor="1" ElementType="InputBox" Guid="74c9baf1-c2e9-4f27-abfd-bc37af4bfac2" InformativeScreenshot="2b873edfe052d4ae09a7ce392ef9cdbe.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Sign Up - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target CvTextArea="266, 591, 71, 15" CvTextArgument="Password" CvType="Text" DesignTimeRectangle="266, 591, 71, 15" ElementType="Text" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NTypeInto.Target>
+                            </uix:NTypeInto>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Login'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CvElementArea="571, 678, 70, 42" CvTextArea="586, 691, 41, 18" CvTextArgument="Login" CvType="Button" DesignTimeRectangle="571, 678, 70, 42" DesignTimeScaleFactor="1" ElementType="Button" Guid="8ef18f6b-c132-426b-b69d-e409287f26f6" InformativeScreenshot="b78fa71b4570aa3729585a03bbf8b078.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Sign Up - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive" />
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NClick ActivateBefore="True" ClickType="Double" DisplayName="Click 'Browse'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_10" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CvElementArea="474, 788, 85, 40" CvTextArea="486, 799, 60, 15" CvTextArgument="Browse" CvType="Button" DesignTimeRectangle="474, 788, 85, 40" DesignTimeScaleFactor="1" ElementType="Button" Guid="103fd3e7-0ea7-4719-a80c-00345fa745dc" InformativeScreenshot="3e733a5b702097a686d57c228c3c50fd.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Predict Vegetable Type - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive" />
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NClick ActivateBefore="True" ClickType="Double" DisplayName="Click '1198'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_11" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CvTextArea="222, 222, 26, 12" CvTextArgument="1198" CvType="Text" DesignTimeRectangle="182, 123, 105, 116" DesignTimeScaleFactor="1" ElementType="ListItem" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd ctrlid='1121' title='ShellView' /&gt;&lt;wnd aaname='Items View' cls='DirectUIHWND' /&gt;&lt;ctrl name='Items View' role='list' /&gt;&lt;ctrl automationid='0' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd ctrlid='1121' title='ShellView' /&gt;&lt;wnd aaname='Items View' cls='DirectUIHWND' /&gt;&lt;ctrl name='Items View' role='list' /&gt;&lt;ctrl automationid='0' role='list item' check:text='1198' /&gt;" Guid="90d320a9-a6db-4285-803c-a796ec482277" InformativeScreenshot="61e9d77b98d651413501a15b6f6709e5.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Open' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V3" Visibility="Interactive" />
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NMouseScroll KeyModifiers="{x:Null}" Direction="Down" DisplayName="Mouse Scroll" sap:VirtualizedContainerService.HintSize="334,139.33333333333334" sap2010:WorkflowViewState.IdRef="NMouseScroll_1" InteractionMode="HardwareEvents" MovementUnits="2" Version="V3" />
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Submit'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_12" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CvElementArea="440, 687, 76, 39" CvTextArea="452, 698, 54, 15" CvTextArgument="Submit" CvType="Button" DesignTimeRectangle="440, 687, 76, 39" DesignTimeScaleFactor="1" ElementType="Button" Guid="a929232f-6dee-43a3-b84b-5ef80f2995a0" InformativeScreenshot="8c9e5e84fc173da352f11e55d8980590.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Predict Vegetable Type - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive" />
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NMouseScroll KeyModifiers="{x:Null}" Direction="Down" DisplayName="Mouse Scroll" sap:VirtualizedContainerService.HintSize="334,139.33333333333334" sap2010:WorkflowViewState.IdRef="NMouseScroll_2" InteractionMode="HardwareEvents" MovementUnits="8" Version="V3" />
+                            <uix:NHover DisplayName="Hover 'chrome.exe Predict'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NHover_1" InteractionMode="HardwareEvents" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NHover.Target>
+                                <uix:TargetAnchorable CvElementArea="299, 546, 187, 216" CvType="Button" DesignTimeRectangle="299, 546, 187, 216" DesignTimeScaleFactor="1" ElementType="Button" Guid="50686956-3b4c-4686-9c90-d282872cef35" InformativeScreenshot="de3c200ece5c5edce1285de7684eba4b.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Predict Vegetable Type - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                      <uix:Target CvElementArea="48, 970, 92, 40" CvTextArea="61, 981, 66, 15" CvTextArgument="Email Us" CvType="Button" DesignTimeRectangle="48, 970, 92, 40" ElementType="Button" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NHover.Target>
+                            </uix:NHover>
+                            <uix:NMouseScroll KeyModifiers="{x:Null}" Direction="Up" DisplayName="Mouse Scroll" sap:VirtualizedContainerService.HintSize="334,240.66666666666666" sap2010:WorkflowViewState.IdRef="NMouseScroll_3" InteractionMode="HardwareEvents" MovementUnits="10" Version="V3">
+                              <uix:NMouseScroll.SearchedElement>
+                                <uix:SearchedElement>
+                                  <uix:SearchedElement.Target>
+                                    <uix:TargetAnchorable CvElementArea="704, 99, 59, 44" CvType="Button" DesignTimeRectangle="704, 99, 59, 44" DesignTimeScaleFactor="1" ElementType="Button" Guid="b9a6de2d-166d-401d-bd38-b9a65257d83c" InformativeScreenshot="93cc835869420ee2bccd0b5583943042.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Predict Vegetable Type - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                          <uix:Target CvElementArea="110, 779, 483, 40" CvType="InputBox" DesignTimeRectangle="110, 779, 483, 40" ElementType="InputBox" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                          <uix:Target CvElementArea="282, 732, 223, 39" CvTextArea="295, 742, 196, 19" CvTextArgument="Switch to Webcam Capture" CvType="Button" DesignTimeRectangle="282, 732, 223, 39" ElementType="Button" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:SearchedElement.Target>
+                                  <uix:SearchedElement.Timeout>
+                                    <InArgument x:TypeArguments="x:Double" />
+                                  </uix:SearchedElement.Timeout>
+                                </uix:SearchedElement>
+                              </uix:NMouseScroll.SearchedElement>
+                            </uix:NMouseScroll>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'chrome.exe Predict'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_13" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CvElementArea="701, 97, 65, 50" CvType="Button" DesignTimeRectangle="704, 99, 59, 44" DesignTimeScaleFactor="1" ElementType="Button" Guid="f91a963a-6624-4df0-ba8f-3aa091f5dabb" InformativeScreenshot="304380f35ac4fd2005995399b7faecad.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Predict Vegetable Type - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                      <uix:Target CvElementArea="282, 732, 223, 39" CvTextArea="295, 742, 196, 19" CvTextArgument="Switch to Webcam Capture" CvType="Button" DesignTimeRectangle="282, 732, 223, 39" ElementType="Button" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'History'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_14" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CvTextArea="352, 266, 82, 26" CvTextArgument="History" CvType="Text" DesignTimeRectangle="352, 266, 82, 26" DesignTimeScaleFactor="1" ElementType="Text" Guid="6cb27a75-b163-4bd4-b8c0-e301754009d4" InformativeScreenshot="a7a0d25fcc6deadda236cb39bf9519d2.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Predict Vegetable Type - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive" />
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'D'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_19" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CvTextArea="687, 613, 10, 12" CvTextArgument="D" CvType="Text" DesignTimeRectangle="687, 613, 10, 12" DesignTimeScaleFactor="1" ElementType="Text" Guid="2746ecb1-cb13-4f9a-b5e1-d8eedefd6bdd" InformativeScreenshot="9f921ef7ce98078459ad9fcb9fd660b9.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='image-classification-app-ww2z.onrender.com/history - Google Chro*' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive" />
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'VG-15'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_15" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CvTextArea="64, 110, 88, 25" CvTextArgument="VG-15" CvType="Text" DesignTimeRectangle="64, 110, 88, 25" DesignTimeScaleFactor="1" ElementType="Text" Guid="ed0f046a-c470-4659-bd69-bbf0a7aaf1a2" InformativeScreenshot="e5bba398b1f5c9424b8933d6de3c7d71.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='image-classification-app-ww2z.onrender.com/history - Google Chro*' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive" />
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'chrome.exe image-classi…'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_16" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CvElementArea="701, 96, 65, 50" CvType="Button" DesignTimeRectangle="704, 100, 59, 43" DesignTimeScaleFactor="1" ElementType="Button" Guid="b6a8d743-44ed-4791-ba7b-dfa2c447eac3" InformativeScreenshot="62d9d1b2345eba8d437399002aa93500.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='image-classification-app-ww2z.onrender.com - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                      <uix:Target CvElementArea="212, 605, 363, 111" CvTextArea="328, 652, 128, 25" CvTextArgument="About Us" CvType="Button" DesignTimeRectangle="212, 605, 363, 111" ElementType="Button" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Log Out'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_17" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CvElementArea="102, 354, 94, 45" CvTextArea="119, 368, 60, 18" CvTextArgument="Log Out" CvType="Button" DesignTimeRectangle="102, 354, 94, 45" DesignTimeScaleFactor="1" ElementType="Button" Guid="761c4b20-4a35-4d39-854f-58b4211c7f77" InformativeScreenshot="51ed5c3daf8267a78f957ed5dd772a06.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='image-classification-app-ww2z.onrender.com - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive" />
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="300,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:InvalidOperationException" sap:VirtualizedContainerService.HintSize="500.6666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:InvalidOperationException">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:InvalidOperationException" Name="exception" />
+                        </ActivityAction.Argument>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Need an account?'" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c55ca006-79d2-4055-8d6f-b39a7cdc9e15" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable CvTextArea="325, 757, 163, 18" CvTextArgument="Need an account?" CvType="Text" DesignTimeRectangle="325, 757, 163, 18" DesignTimeScaleFactor="1" ElementType="Text" Guid="53d563fd-1e26-4d0b-8b06-67ca24b114dd" InformativeScreenshot="138e81db7141b4c251a3719596ba080d.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Sign Up - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="3715, -541, 772, 1039" FilePath="C:\Program Files\Google\Chrome\Application\chrome.exe" IconBase64="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" InformativeScreenshot="6e7eeef7b9209f92ecda7cf0c6c71c12.png" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='image-classification-app-ww2z.onrender.com - Google Chrome' /&gt;" Title="image-classification-app-ww2z.onrender.com - Google Chrome" />
+          </uix:NApplicationCard.TargetApp>
+        </uix:NApplicationCard>
+      </Sequence>
+    </FlowStep>
+  </Flowchart>
+</Activity>

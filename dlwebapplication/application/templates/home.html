@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+{% set footer = true %}
+{% block content %}
+
+<!--Setting the special style for this page-->
+<style>
+    .infos {
+      background-color: #a3bbd6   ;
+    }
+</style>
+
+<body class='body1'>
+
+  <!--Setting the carousell for the home page-->
+    <div id="welcomeCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="text-overlay">
+              <h1>Welcome to Vegetable Classification</h1>
+              <p>Best Deep Learning Model</p>
+            </div>
+            <img class="d-block w-100 h-50 img-fluid" src="{{ url_for('static', filename='images/images.jpg') }}" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <div class="text-overlay">
+              <h1>Welcome to Vegetable Classification</h1>
+              <p>Best Deep Learning Model</p>
+            </div>
+            <img class="d-block w-100 img-fluid image2" src="{{ url_for('static', filename='images/images2.jpg') }}" alt="Second slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#welcomeCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#welcomeCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    <div class='infos'>
+
+      <section id="about" class="container" style="font-family: Arial, sans-serif;">
+        <div class="row">
+          <div class="col-md-6 text1">
+            <h2 style="font-size: 28px; font-weight: bold; color: #333;">About Us</h2>
+          </div>
+          <div class="container my-5 about">
+            <div class="decorative-card">
+              <div class="card-body">
+                <p style="font-size: 18px !important; line-height: 1.6; color: #666;">Thank you for visiting our webpage. Our goal is to provide state-of-the-art neural network models for classification tasks. We leverage advanced techniques like autoencoders and CutMix to enhance accuracy and robustness. If you encounter any issues or have feedback, please don't hesitate to contact us using the details below.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="technology" class="container" style="font-family: Arial, sans-serif;">
+        <div class="row">
+          <div class="col-md-6 text1">
+            <h2 style="font-size: 28px !; font-weight: bold; color: #333;">Our Models</h2>
+          </div>
+          <div class="container my-5">
+            <div class="decorative-card">
+              <div class="card-body">
+                <ul style="font-size: 18px !important; line-height: 1.6; color: #666;">
+                  <li>Utilisation of two advanced neural network models (one for 31 x 31 and one for 128 x 128)</li>
+                  <li>Integration of special techniques like autoencoders and CutMix</li>
+                  <li><strong>Impressive model accuracy of 99%</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="benefits" class="container" style="font-family: Arial, sans-serif;">
+        <div class="row">
+          <div class="col-md-6 text1">
+            <h2 style="font-size: 28px; font-weight: bold; color: #333;">Benefits of Our Platform</h2>
+          </div>
+          <div class="container my-5">
+            <div class="decorative-card">
+              <div class="card-body">
+                <ul style="font-size: 18px !important; line-height: 1.6; color: #666;">
+                  <li>Access to accurate vegetable predictions based on advanced neural network models</li>
+                  <li>Customized recommendations tailored to your preferences</li>
+                  <li>Regular updates and improvements to enhance user experience</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</div>
+</body>
+{% endblock %}

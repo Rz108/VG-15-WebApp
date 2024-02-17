@@ -1,0 +1,83 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Flowchart-ImageClassification_App.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "outputFromGetText&Sequence_7",
+        "loginStatusMessage&Sequence_7"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "../../../Downloads/Flowchart-ImageClassification_App.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "outputFromGetText&Sequence_7",
+        "loginStatusMessage&Sequence_7"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "../../Y2S2/DevOps/CA2_2/Flowchart-ImageClassification_App.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "outputFromGetText&Sequence_7",
+        "loginStatusMessage&Sequence_7"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "../../Y2S2/DevOps/CA2_2/Flowchart-ImageClassification_App_final.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "outputFromGetText&Sequence_7",
+        "loginStatusMessage&Sequence_7"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Flowchart-ImageClassificationApp.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "../Flowchart-ImageClassificationApp.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "RPA.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "outputFromGetText&Sequence_7",
+        "loginStatusMessage&Sequence_7"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

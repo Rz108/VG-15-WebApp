@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+{% set footer = false %} 
+
+{% block content %}
+<style>
+    .forms {
+        background-color: #a3bbd6 !important;
+    }
+
+    .table-container {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .table {
+        border-radius: 10px !important;
+        box-shadow: 0 0 30px rgba(32, 183, 189, 0.2) !important;
+    }
+
+    .pagination {
+        margin-top: 20px;
+    }
+</style>
+<div class="justify-content-center p-3 forms">
+    <div class="col-12">
+        <div class="bg-dark border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded text-warning fw-semi-bold py-1 px-3">
+                    Below are your prediction histories!
+                </p>
+                <h1 class="display-5 mb-5 text-white">Your Prediction History</h1>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show text-center" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+              
+            <!-- Separate Container for Advanced Filtering -->
+            <div class="bg-light border rounded mb-4 p-3"  style="background-color: #F0FFF0 !important">
+                <h5 class="mb-3">Filter Predictions</h5>
+                <form action="{{ url_for('history') }}" method="get" class="row g-3" >
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Search by filename or prediction..." name="q" value="{{ request.args.get('q', '') }}">
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select" name="model_filter">
+                            <option value="">Filter by Model</option>
+                            <option value="128x128 Model" {% if request.args.get('model_filter') == '128x128 Model' %}selected{% endif %}>128x128 Model</option>
+                            <option value="31x31 Model" {% if request.args.get('model_filter') == '31x31 Model' %}selected{% endif %}>31x31 Model</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="date" class="form-control" name="date_from" value="{{ request.args.get('date_from', '') }}">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="date" class="form-control" name="date_to" value="{{ request.args.get('date_to', '') }}">
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select" name="confidence_filter">
+                            <option value="">Filter by Confidence</option>
+                            <option value="High" {% if request.args.get('confidence_filter') == 'high' %}selected{% endif %}>High (80-100%)</option>
+                            <option value="Medium" {% if request.args.get('confidence_filter') == 'medium' %}selected{% endif %}>Medium (50-79%)</option>
+                            <option value="Low" {% if request.args.get('confidence_filter') == 'low' %}selected{% endif %}>Low (0-49%)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select" name="vegetable_filter">
+                            <option value="">Filter by Vegetable</option>
+                            {% for key, value in classes.items() %}
+                            <option value="{{ key }}" {% if request.args.get('vegetable_filter') == key %}selected{% endif %}>{{ value }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="number" class="form-control" placeholder="Confidence Min (%)" name="confidence_min" min="0" max="100" value="{{ request.args.get('confidence_min', '') }}">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="number" class="form-control" placeholder="Confidence Max (%)" name="confidence_max" min="0" max="100" value="{{ request.args.get('confidence_max', '') }}">
+                    </div>
+
+                    <!-- Apply Filters Button -->
+                    <div class="col-md-1">
+                        <button class="btn btn-primary" type="submit">Apply Filters</button>
+                    </div>
+                    
+                    <!-- Reset Filters Button -->
+                    <div class="col-md-1">
+                        <a href="{{ url_for('history') }}" class="btn btn-secondary">Reset</a>
+                    </div>
+                </form> 
+            </div>
+
+
+
+            <div class="table-responsive ps-1 pe-1" style="height: 400px;">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Model</th>
+                            <th scope="col">Predicted On</th>
+                            <th scope="col">Prediction</th>
+                            <th scope="col">Confidence Score</th>
+                            <th scope="col">Confidence Cateogry</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pred in predictions.items %}
+                        <tr>
+                            <td><img src="{{ url_for('static', filename='stored_images/' + pred.filename) }}" alt="Prediction Image" style="max-width: 100px; max-height: 100px;"></td>
+                            <td>{{ pred.model }}</td>
+                            <td>{{ pred.predicted_on.strftime("%d %b %Y %H:%M") }}</td>
+                            <td>{{ pred.prediction }}</td>
+                            <td>{{ '%d'|format(pred.confidence_score * 100) }}%</td>
+                            <td>{{ pred.confidence_cat }}</td>
+
+                            <td>
+                                <form action="{{ url_for('history') }}" method="post">
+                                    <input type="hidden" name="id_to_delete" value="{{ pred.id }}">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-3">
+                <ul class="pagination justify-content-center">
+                    {% if predictions.has_prev %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ prev_url }}">Previous</a>
+                        </li>
+                    {% endif %}
+                    {% if predictions.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ next_url }}">Next</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

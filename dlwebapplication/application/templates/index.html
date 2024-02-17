@@ -1,0 +1,440 @@
+{% extends "layout.html" %}
+{% set footer = true %}
+{% block content %}
+
+<style>
+    .forms {
+        background-color: #305178 !important;
+        color: white !important;
+    }
+    #webcam-container,
+    .model-toggle,
+    .btn-capture {
+        margin-top: 20px;
+    }
+    #canvas {
+        display: none;
+    }
+    .chart-container {
+        width: 100%;
+        max-width: 180px;
+        margin: 0 auto;
+    }
+
+    .charts-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .chart-item {
+        flex: 0 0 20%;
+        margin-bottom: 20px; 
+    }
+
+    .forms {
+        background-color: #a3bbd6 !important;
+    }
+    #webcam-container,
+    .model-toggle,
+    .btn-capture {
+        margin-top: 20px;
+    }
+    #canvas {
+        display: none;
+    }
+    .chart-container {
+        width: 100%;
+        max-width: 180px;
+        margin: 0 auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        border-radius: 10px;
+        background-color: #ffffff; 
+        padding: 15px; 
+        text-align: center;
+    }
+    .charts-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .chart-item {
+        flex: 0 0 20%; 
+        margin-bottom: 20px; 
+        transition: transform 0.3s ease; 
+    }
+    .chart-item:hover {
+        transform: translateY(-10px); 
+    }
+    .form-container {
+        background: #F0FFF0;
+        padding: 20px;
+        border: 1px solid black;
+        margin-bottom: 50px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Header Styles */
+    .header-style h1 {
+        color: #333;
+        font-weight: bold;
+    }
+    
+    .header-style p {
+        color: #666;
+        font-size: 18px;
+    }
+    
+    /* Section Title */
+    .section-title {
+        color: #4caf50; 
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    
+    /* Custom Form Styling */
+    .styled-form .btn-info,
+    .styled-form .btn-success,
+    .styled-form .btn-danger,
+    .styled-form .btn-secondary,
+    .styled-form .btn-primary {
+        margin: 10px 0;
+        border: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .styled-form .custom-file-input {
+        position: relative;
+        text-align: left;
+        line-height: 22px;
+        transition: all 0.4s;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: #fafafa;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .styled-form .custom-file-label {
+        background: #e9ecef;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    
+    .styled-form .model-toggle {
+        margin-top: 20px;
+    }
+    
+    #imagePreview {
+        border: 3px solid #ddd;
+        padding: 10px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+  
+    #webcam-container {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f0f0f0;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    @media (max-width: 768px) {
+        .form-container {
+            margin: 10px;
+            padding: 15px;
+        }
+    }
+    .content-container {
+        padding-bottom: 60px; 
+    }
+</style>
+<div class="container-fluid forms" >
+<!-- If there is any errors -->
+    <div class="container-fluid">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show shadow-sm rounded" role="alert" style="color: black"> <!-- Customize colors as needed -->
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <!--Setting the iamge at the top-->
+    <div class="row">
+        <div class="col-12">
+
+            <div style="background-image: url('{{ url_for('static', filename='images/images.jpg') }}'); height: 300px; background-size: cover; background-position: center; position: relative ; border-radius:20px; box-shadow: 20px 0 10px gray;margin-top:10px">
+                <legend class="mb-4" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
+                    <h1>{{ title }}</h1>
+                </legend>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+
+            <div class="container py-5 form-container"> 
+                <header class="text-center header-style"> 
+                    <h1 class="display-4">Vegetable Detection</h1>
+                    <p class="lead mb-5">A Deep Learning Web App to detect which vegetable you have!</p>
+                </header>
+             
+                <div class="row py-4">
+                    <div class="container">
+                        <form id="imageForm" action="{{ url_for('predict') }}" enctype="multipart/form-data" method="POST" class="styled-form"> 
+                            <div class="text-center">
+                                <button type="button" id="toggleMode" class="btn btn-info">Switch to Webcam Capture</button>
+                            </div>
+                        
+                            <div class="input-group mb-3" id="uploadArea">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="upload" name="file" onchange="previewImage(this);">
+                                    <label class="custom-file-label" for="upload">Choose file</label>
+                                </div>
+                            </div>
+                        
+                            <!-- Image preview area -->
+                            <div id="imagePreview" class="text-center">
+                                <img src="" alt="Image Preview" id="imagePreviewImg" style="max-width: 100%; max-height: 300px; margin-top: 20px; display: none;">
+                            </div>
+                        
+                    
+                            <div id="webcam-container" class="text-center" style="display: none;">
+                                <video id="webcam" autoplay playsinline width="300" height="200"></video>
+                                <button type="button" id="startCamera" class="btn btn-success">Start Camera</button>
+                                <button type="button" id="stopCamera" class="btn btn-danger">Stop Camera</button>
+                                <button type="button" id="capture" class="btn btn-secondary btn-capture">Capture Image</button>
+                                <canvas id="canvas" width="300" height="200"></canvas>
+                            </div>
+                            <div class="model-toggle">
+                                <label for="modelChoice" style="color: black">Choose Model:</label>
+                                <select id="modelChoice" name="modelChoice" class="form-control">
+                                    <option value="big">128 x 128 Model</option>
+                                    <option value="small">31 x 31 Model</option>
+                                </select>
+                            </div>
+                        
+                            <input type="hidden" id="webcamImage" name="webcamImage">
+
+                            <div class="text-center mt-4">
+                                <input class="btn btn-primary" type="submit"/>
+                            </div>
+                        </form>
+                    </div>
+                    {% if prediction %}
+                    <div class="container mt-4 charts-container"> 
+                        <h5 class="display-6 text-center" style="color: #ffffff; font-weight: bold; background-color: #4caf50; padding: 10px; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">Predicted Class: {{ best }}</h5>
+                        <div class="charts-row">
+                            {% for vegetable, probability in prediction.items() %}
+                            <div class="chart-item">
+                                <div class="chart-container">
+                                    <h5 style='color:black'class="chart-title">{{ vegetable }}</h5> 
+                                    <canvas id="chart-{{ vegetable|replace(' ', '_') }}"></canvas>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+             
+        </div>
+    </div>
+</div>
+
+<!--Setting the prediction results below-->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        {% if prediction is not none %}
+            {% for vegetable, probability in prediction.items() %}
+                var ctx = document.getElementById('chart-{{ vegetable }}').getContext('2d');
+                var pred = {{ probability | tojson }};
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Probability', 'Not-Probability'],
+                        datasets: [{
+                            label: '{{ vegetable }} Probability',
+                            data: [pred*100, 100 - pred*100],
+                            backgroundColor: [
+                                '#FF6384', // Pink
+                                '#36A2EB', // Blue
+                                '#FFCE56', // Yellow
+                                '#4BC0C0', // Teal
+                                '#9966FF', // Purple
+                                '#FF9F40', // Orange
+                                '#C9CBCF', // Grey
+                                '#7ACBEE', // Light Blue
+                                '#FF6384', // Repeating colors if more than 7 segments
+                                '#36A2EB',
+                                '#FFCE56',
+                                '#4BC0C0',
+                                '#9966FF',
+                                '#FF9F40',
+                                '#C9CBCF'
+                            ],
+                            hoverBackgroundColor: [
+                                '#FF6384', 
+                                '#36A2EB', 
+                                '#FFCE56', 
+                                '#4BC0C0', 
+                                '#9966FF', 
+                                '#FF9F40', 
+                                '#C9CBCF',
+                                '#7ACBEE',
+                                '#FF6384',
+                                '#36A2EB',
+                                '#FFCE56',
+                                '#4BC0C0',
+                                '#9966FF',
+                                '#FF9F40',
+                                '#C9CBCF'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                });
+            {% endfor %}
+        {% endif %}
+    });
+</script>
+<!-- Setting the script for javascript-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var webcamStream = null;
+        var mode = 'upload'; // Current mode: 'upload' or 'capture'
+
+        // Function to initialize the webcam
+        function startWebcam() {
+            var video = document.getElementById('webcam');
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                    webcamStream = stream;
+                    video.srcObject = stream;
+                    video.play();
+                }).catch(function(error) {
+                    console.error("Error accessing the webcam", error);
+                });
+            }
+        }
+    
+        // Function to stop the webcam
+        function stopWebcam() {
+            if (webcamStream) {
+                webcamStream.getTracks().forEach(function(track) {
+                    track.stop();
+                });
+                webcamStream = null;
+                var video = document.getElementById('webcam');
+                video.pause();
+                video.srcObject = null;
+            }
+        }
+    
+        // Start Camera button event
+        $('#startCamera').click(function() {
+            startWebcam();
+        });
+    
+        // Stop Camera button event
+        $('#stopCamera').click(function() {
+            stopWebcam();
+        });
+    
+        // Function to update the label of the file input
+        $('#upload').on('change', function() {
+            var fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').html(fileName);
+        });
+
+        // Function to toggle webcam
+        function toggleWebcam(on) {
+            var video = document.getElementById('webcam');
+            if (on) {
+                if (!webcamStream) {
+                    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                        webcamStream = stream;
+                        video.srcObject = stream;
+                        video.play();
+                    }).catch(function(error) {
+                        console.error("Error accessing the webcam", error);
+                    });
+                }
+            } else {
+                if (webcamStream) {
+                    webcamStream.getTracks().forEach(track => track.stop());
+                    webcamStream = null;
+                }
+            }
+        }
+
+ 
+        $('#toggleMode').click(function() {
+            if (mode === 'upload') {
+                mode = 'capture';
+                $('#imagePreview').hide();
+                $('#uploadArea').hide();
+                $('#webcam-container').show();
+                $(this).text('Switch to File Upload');
+                $('#modeTitle').text('Webcam Capture');
+                toggleWebcam(true);
+            } else {
+                mode = 'upload';
+                $('#uploadArea').show();
+                $('#imagePreview').show();
+                $('#webcam-container').hide();
+                $(this).text('Switch to Webcam Capture');
+                $('#modeTitle').text('File Upload');
+                toggleWebcam(false);
+            }
+        });
+
+        // Capture image from webcam
+        $('#capture').click(function() {
+            if (webcamStream) {
+                var canvas = document.getElementById('canvas');
+                var context = canvas.getContext('2d');
+                var video = document.getElementById('webcam');
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                $('#webcamImage').val(canvas.toDataURL('image/png'));
+            }
+        });
+    });
+</script>
+<script>
+    function previewImage(input) {
+        var file = input.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var previewImg = document.getElementById('imagePreviewImg');
+                previewImg.src = e.target.result;
+                previewImg.style.display = 'block'; // Make the image visible
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Update the label of the file input to the name of the selected file
+    $(document).ready(function() {
+        $('.custom-file-input').on('change', function() {
+            var fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+    });
+</script>
+
+{% endblock %}

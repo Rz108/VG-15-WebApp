@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% set footer = true %}
+{% block content %}
+<style>
+    body {
+        background-color: #a3bbd6 !important;
+        height: 100%;
+        margin-bottom: 100px !important;
+    }
+
+    .card {
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+        color: #333;
+        font-weight: bold;
+    }
+
+    .card-subtitle {
+        color: #666;
+    }
+
+    .list-group-item {
+        background-color: transparent;
+        border: none;
+        color: #333;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #333;
+        border-radius: 20px;
+    }
+
+    .btn-warning:hover {
+        background-color: #ffca28;
+        border-color: #ffca28;
+        color: #333;
+    }
+</style>
+<div class="container mt-5 forms">
+
+    <div class="card card-deck">
+        <div class="card-body">
+            <h5 class="card-title">{{ user.username }}'s Profile</h5>
+            <h6 class="card-subtitle mb-2 text-muted">User Details</h6>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Username: {{ user.username }}</li>
+                <li class="list-group-item">Email: {{ user.email }}</li>
+
+            </ul>
+            <a href="{{ url_for('change_password', username=user.username) }}" class="btn btn-warning mt-3">Change Password</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
